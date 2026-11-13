@@ -56,8 +56,6 @@ textarea {
   font: inherit;
 }
 
-/* ---------- Layout ---------- */
-
 .layout {
   display: flex;
   flex-direction: column;
@@ -114,8 +112,6 @@ textarea {
   font-size: 0.875rem;
   border-top: 1px solid var(--border);
 }
-
-/* ---------- Gemensamt ---------- */
 
 .muted {
   color: var(--muted);
@@ -196,8 +192,6 @@ textarea {
   color: var(--muted);
 }
 
-/* ---------- Filter ---------- */
-
 .filter {
   display: flex;
   flex-wrap: wrap;
@@ -224,8 +218,6 @@ textarea {
   color: var(--on-accent);
   font-weight: 600;
 }
-
-/* ---------- Spellista ---------- */
 
 .game-list {
   display: grid;
@@ -341,8 +333,6 @@ textarea {
   opacity: 0.4;
 }
 
-/* ---------- Detaljsida ---------- */
-
 .back-link {
   display: inline-block;
   margin-bottom: 1.5rem;
@@ -376,8 +366,6 @@ textarea {
   margin: 0;
   white-space: pre-wrap;
 }
-
-/* ---------- Formulär ---------- */
 
 .form {
   display: flex;
@@ -423,8 +411,6 @@ textarea {
   flex-wrap: wrap;
 }
 
-/* ---------- 404 ---------- */
-
 .not-found {
   text-align: center;
   padding: 3rem 0;
@@ -436,8 +422,6 @@ textarea {
   font-weight: 800;
   color: var(--accent);
 }
-
-/* ---------- Mobil ---------- */
 
 @media (max-width: 640px) {
   .detail-grid,

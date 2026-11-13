@@ -14,7 +14,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
     try {
       localStorage.setItem(key, JSON.stringify(value));
     } catch {
-      // localStorage kan vara blockerat (t.ex. privat läge) – appen fungerar ändå
+      // Går det inte att spara fungerar appen ändå
     }
   }, [key, value]);
 

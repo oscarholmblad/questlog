@@ -2,9 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { API_BASE_URL } from "../config";
 import type { Game, GameChanges, NewGame, StatusFilter } from "../types/game";
 
-// ---------- Gemensam fetch-logik ----------
-
-export class ApiError extends Error {
+class ApiError extends Error {
   status: number;
 
   constructor(message: string, status: number) {
@@ -24,7 +22,6 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
         : undefined,
     });
   } catch (error) {
-    // Avbrutna anrop (AbortController) skickas vidare som de är
     if (error instanceof DOMException && error.name === "AbortError")
       throw error;
     throw new Error(
@@ -41,7 +38,7 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
       const body = (await response.json()) as { message?: string };
       if (body.message) message = body.message;
     } catch {
-      // Svaret var inte JSON – behåll standardmeddelandet
+      // Inget JSON-svar, då används standardmeddelandet
     }
     throw new ApiError(message, response.status);
   }
@@ -53,8 +50,6 @@ function getErrorMessage(error: unknown): string {
   if (error instanceof Error) return error.message;
   return "Something went wrong";
 }
-
-// ---------- Hämtning (GET) ----------
 
 type FetchState<T> = {
   path: string;
@@ -87,7 +82,6 @@ function useFetch<T>(path: string) {
     return () => controller.abort();
   }, [path]);
 
-  // State som hör till en tidigare path räknas inte – då laddar vi fortfarande
   const current = state !== null && state.path === path ? state : null;
 
   const setData = useCallback(
@@ -118,8 +112,6 @@ export function useGame(id: string) {
 
   return { game: data, isLoading, error, notFound, setGame: setData };
 }
-
-// ---------- Ändringar (POST, PATCH, DELETE) ----------
 
 export function useSaveGame() {
   const [isSaving, setIsSaving] = useState(false);

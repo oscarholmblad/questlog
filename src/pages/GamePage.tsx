@@ -11,7 +11,6 @@ import { useGame, useSaveGame } from "../hooks/useGames";
 import type { Game, GameChanges } from "../types/game";
 import { NotFoundPage } from "./NotFoundPage";
 
-// Skickar bara de fält som faktiskt ändrats (PATCH)
 function getChanges(game: Game, values: GameFormValues): GameChanges {
   const changes: GameChanges = {};
   if (values.title !== game.title) changes.title = values.title;
@@ -60,7 +59,7 @@ export function GamePage() {
   }
 
   return (
-    <article className="game-detail">
+    <article>
       <Link to="/" className="back-link">
         ← Back to games
       </Link>
@@ -89,7 +88,7 @@ export function GamePage() {
         <div className="detail-grid">
           <Cover url={game.coverUrl} title={game.title} />
 
-          <div className="detail-info">
+          <div>
             <h1>{game.title}</h1>
             <dl className="detail-list">
               <dt>Platform</dt>

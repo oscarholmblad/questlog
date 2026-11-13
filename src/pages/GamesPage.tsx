@@ -12,7 +12,6 @@ export function GamesPage() {
     "questlog-status-filter",
     "all",
   );
-  // Skydd om localStorage innehåller ett ogiltigt värde
   const filter = isStatusFilter(savedFilter) ? savedFilter : "all";
   const { games, isLoading, error } = useGames(filter);
 

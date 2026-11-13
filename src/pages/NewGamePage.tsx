@@ -17,7 +17,6 @@ export function NewGamePage() {
       rating: values.rating,
       notes: values.notes,
     };
-    // API:et kräver att coverUrl börjar med http(s), så tom sträng skickas inte
     if (values.coverUrl) newGame.coverUrl = values.coverUrl;
 
     const created = await createGame(newGame);
